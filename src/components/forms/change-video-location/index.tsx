@@ -1,5 +1,3 @@
-
-import Folders from "@/components/global/folders";
 import Loader from "@/components/global/loader";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -13,11 +11,9 @@ type Props = {
     videoId : string
     currentFolder? : string
     currentworkspace? : string
-    currentFolderName? : string
 }
-const ChangeVideoLocation = ({videoId,currentFolder,currentFolderName,currentworkspace}:Props)=> {
+const ChangeVideoLocation = ({videoId,currentFolder,currentworkspace}:Props)=> {
 const {onFormSubmit,
-    errors,
     register,
     isPending,
     folders,

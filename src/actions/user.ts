@@ -42,9 +42,9 @@ export const sendEmail = async (
     });
     console.log("✅ Email sent:", info.response);
     return { success: true };
-  } catch (error: any) {
-    console.error("⛔ Email error:", error.message);
-    return { success: false, error: error.message };
+  } catch (error) {
+    console.error("⛔ Email error:", error);
+    return { success: false, error};
   }
 };
 
@@ -213,6 +213,7 @@ export const inviteMembers = async (
         }
       }
     })
+    console.log("Notification created:", notification);
     const emailResult = await sendEmail(
       email,
       "You got an invitation 🚀",
@@ -266,6 +267,7 @@ export const getUserProfile = async ()=> {
     if(profileIdAndImage) return {status : 200 , data : profileIdAndImage}
   }
   catch(error){
+    console.error("⛔ Error in getUserProfile:", error);
     return {status : 400}
   }}
 
@@ -300,6 +302,7 @@ export const searchUsers = async (query:string)=> {
     }
     return {status : 404 , data : undefined}
   }catch (error){
+    console.error("⛔ Error in searchUsers:", error);
     return {status : 500}
   }
 }
@@ -374,6 +377,7 @@ export const getVideoComments = async (id:string)=> {
     if(comments && comments.length > 0) return {status : 200 , data : comments}
     return {status : 404}
   }catch(error){
+    console.error("⛔ Error in getVideoComments:", error);
     return {status : 400}
   }
 }
@@ -419,6 +423,7 @@ export const createCommentAndReply = async (
     })
     if(newComment) return {status: 200 , data :'New Comment Added'}
   }catch (error){
+    console.error("⛔ Error in getVideoComments:", error);
     return {status :400}
   }
 }
@@ -443,6 +448,7 @@ export const getPaymentInfo = async()=> {
       return { status : 200 , data : payment}
     }
   }catch(error){
+    console.error("⛔ Error in getPaymentInfo:", error);
     return {status :400}
   }
 }
@@ -464,6 +470,7 @@ export const getFirstView = async ()=> {
   }
   return {status : 400 , data : false}
   }catch (error){
+    console.error("⛔ Error in getFirstView:", error);
     return {status : 200}
   }
 }
@@ -484,6 +491,7 @@ export const enableFirstView = async (state:boolean)=> {
       return {status : 200 , data :'Settings updated'}
     }
   }catch(error ){
+    console.error("⛔ Error in enableFirstView:", error);
     return {status : 400}
   }
 }

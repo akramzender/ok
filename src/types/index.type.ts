@@ -1,4 +1,3 @@
-import { StackId } from "recharts/types/util/ChartUtils"
 
 export type WorkspaceProps = {
     data: {

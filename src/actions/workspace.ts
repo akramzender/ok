@@ -1,8 +1,7 @@
 'use server'
 
-import { currentUser, User } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 import { client } from "@/lib/prisma";
-import { error } from "console";
 import { sendEmail } from "./user";
 
 export const verifyAccesToWorkspace = async (workspaceId: string) => {
@@ -39,6 +38,7 @@ export const verifyAccesToWorkspace = async (workspaceId: string) => {
              
             };
     } catch (error) { 
+        console.error("⛔ Error in verifyAccesToWorkspace:", error);
         return { 
             status: 403,
             data: { workspace: null }
@@ -66,6 +66,7 @@ export const getWorkspaceFolders = async (workspaceId: string) => {
         
         return { status: 404, data: [] };
     } catch (error) {
+        console.error("⛔ Error in getWorkspaceFolders:", error);
         return { status:403, data: [] };
     }
 }
@@ -113,6 +114,7 @@ export const getAllUserVideos = async (workSpaceId: string) => {
  } 
  return { status: 404 };
     } catch (error) {
+        console.error("⛔ Error in getAllUserVideos:", error);
         return { status: 400 };
     }
 }
@@ -161,6 +163,7 @@ export const getWorkspaces = async () => {
         }
        
     } catch (error) {
+        console.error("⛔ Error in getWorkspaces:", error);
         return { status: 400 };
     }
 }
@@ -206,6 +209,7 @@ console.log(workspace)
         return {status : 401 , data : "You are not authorized to create a workspace"}
        
     }catch(error){
+        console.error("⛔ Error in createWorkspace:", error);
         return {status:400 , data : 'bla' }
     }
 }
@@ -224,6 +228,7 @@ export const renameFolders = async(folderId:string , name:string) => {
         }
         return{status : 400 , data : 'Folder does not exist !'}
     }catch(error){
+        console.error("⛔ Error in renameFolders:", error);
         return {status : 500 , data :'Opps ! something went wrong'}
     }
 }
@@ -245,6 +250,7 @@ export const createFolder = async (workspaceId:string)=>{
         }
        
     }catch(error){
+        console.error("⛔ Error in createFolder:", error);
         return {status : 500 , message : 'Opps ! something went wrong'}
     }
 }
@@ -267,6 +273,7 @@ export const getFolderInfo = async (folderId:string)=> {
             return {status : 200 , data :folder}
         }return {status : 400 , data : null}
     }catch(error){
+        console.error("⛔ Error in getFolderInfo:", error);
         return {status : 500 , data : null}
     }
 }
@@ -289,6 +296,7 @@ export const moveVideoLocation = async (
         if (location) return {status : 200, data : 'folder changed succesfully'}
         return {status : 404 , data : 'workspace /folder not found'}
     }catch(error){
+        console.error("⛔ Error in moveVideoLocation:", error);
         return{status : 500 , data : 'Oops ! something went wrong'}
     }
 }
@@ -336,6 +344,7 @@ export const getPreviewVideo = async (videoId : string)=>{
             status : 404
         }
     } catch (error) {
+        console.error("⛔ Error in getPreviewVideo:", error);
         return{status : 400}
     }
 }
@@ -387,7 +396,7 @@ export const sendEmailForFirstView = async (videoId: string) => {
   
       // Send email notification
       const emailResult = await sendEmail(
-        video.User?.email!,
+        video.User?.email || '',
         "You got a viewer 🚀",
         `Your video "${video.title}" just got its first viewer.`,
         `
@@ -457,6 +466,7 @@ export const sendEmailForFirstView = async (videoId: string) => {
         if (video) return { status: 200, message: "Video info updated" };
         return { status: 404, message: "Video not found" };
     } catch (error) {   
+        console.error("⛔ Error in editVideoInfo:", error);
         return { status: 500, message: "Internal server error" };
     }
 }

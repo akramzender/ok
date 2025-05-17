@@ -1,9 +1,13 @@
 import { getPaymentInfo } from '@/actions/user';
 import React from 'react';
 
-type Props = {};
+type Props = {
+  params: Promise<{
+    workspaceId: string;
+  }>;
+};
 
-const BillingPage = async (props: Props) => {
+const BillingPage = async ({ params }: Props) => {
   const payment = await getPaymentInfo();
 
   return (

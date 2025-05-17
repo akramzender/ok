@@ -1,15 +1,15 @@
-import { client } from "@/lib/prisma"
-import { clerkClient } from "@clerk/clerk-sdk-node"
-import { NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server";
+import { clerkClient } from "@clerk/clerk-sdk-node";
+import { client } from "@/lib/prisma";
 
 export async function GET(
-    req: NextRequest,
-    { params: { id } }: { params: { id: string } }
-  ) {
-  console.log("Endpoint hit with Clerk ID:", id)
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+): Promise<NextResponse> {
+  const id =  (await params).id;
 
   if (!id) {
-    return NextResponse.json({ status: 400, error: "Missing Clerk ID" })
+    return NextResponse.json({ status: 400, error: "Missing Clerk ID" });
   }
 
   try {
@@ -21,14 +21,13 @@ export async function GET(
           select: { plan: true },
         },
       },
-    })
+    });
 
     if (userProfile) {
-      return NextResponse.json({ status: 200, user: userProfile })
+      return NextResponse.json({ status: 200, user: userProfile });
     }
 
-    // ❗ FIXED: Removed () from clerkClient
-    const clerkUser = await clerkClient.users.getUser(id)
+    const clerkUser = await clerkClient.users.getUser(id);
 
     const createUser = await client.user.create({
       data: {
@@ -50,11 +49,11 @@ export async function GET(
           select: { plan: true },
         },
       },
-    })
+    });
 
-    return NextResponse.json({ status: 201, user: createUser })
+    return NextResponse.json({ status: 201, user: createUser });
   } catch (error) {
-    console.error("ERROR", error)
-    return NextResponse.json({ status: 500, error: "Internal Server Error" })
+    console.error("ERROR", error);
+    return NextResponse.json({ status: 500, error: "Internal Server Error" });
   }
 }

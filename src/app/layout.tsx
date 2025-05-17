@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Manrope } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import {
   ClerkProvider,
-  SignInButton,
   SignedIn,
   SignedOut,
-  UserButton,
-  SignUpButton,
 } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/index";
 import ReactQueryProvider from "@/react-query";

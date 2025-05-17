@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {   CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { User, Mail, MessageCircle } from "lucide-react";
 
 const LandingPage: React.FC = () => {

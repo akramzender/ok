@@ -42,7 +42,7 @@ const VideoPreview = ({ videoId }: Props) => {
   }
 
   // Handle error state
-  if (isError || !data || data.status !== 200 || !data.data) {
+  if (isError || !data || data !== 200 || !data) {
     return (
       <div className="flex justify-center items-center h-screen">
         <div className="text-center">
@@ -202,7 +202,7 @@ const VideoPreview = ({ videoId }: Props) => {
                 src={`${videoUrl}#t=1`}
                 type="video/webm"
               />
-              Your browser doesn't support HTML5 video.
+              <p className="text-gray-400">Your browser doesn't support HTML5 video.</p>  
             </video>
           ) : (
             <div className="w-full aspect-video rounded-xl bg-gray-800 flex items-center justify-center">

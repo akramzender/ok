@@ -6,9 +6,13 @@ import { Switch } from '@/components/ui/switch';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
-type Props = {};
+type Props = {
+  params: {
+    workspaceId: string;
+  };
+};
 
-const SettingsPage = (props: Props) => {
+const SettingsPage = ({ params }: Props) => {
   const [firstView, setFirstView] = useState<undefined | boolean>(undefined);
 
   useEffect(() => {

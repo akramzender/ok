@@ -1,10 +1,8 @@
 import { useEditVideo } from '@/hooks/useVideoEdit'
 import React from 'react'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea' 
-import { Button } from '@/components/ui/button'
 import FormGenerator from '@/components/global/form-generator'
 import Loader from '@/components/global/loader'
+import { Button } from '@/components/ui/button'
 type Props = {
     videoId: string,
     title: string,

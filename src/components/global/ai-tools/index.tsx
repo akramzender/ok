@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { TabsContent } from "@/components/ui/tabs";
 import React from "react";
 import Loader from "../loader";
-import { Bot, DownloadIcon, FileTextIcon, FileVideoIcon, Pencil, StarsIcon, VideoIcon } from "lucide-react";
+import { Bot, FileTextIcon, Pencil, StarsIcon } from "lucide-react";
 
 type Props = {
   plan: "PRO" | "FREE";
@@ -10,7 +10,7 @@ type Props = {
   videoId: string;
 };
 
-const AiTools = ({ plan, trial, videoId }: Props) => {
+const AiTools = ({  }: Props) => {
   return (
     <TabsContent
       value="Ai Tools"

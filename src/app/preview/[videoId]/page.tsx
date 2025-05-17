@@ -1,6 +1,5 @@
 import { getUserProfile, getVideoComments } from "@/actions/user";
 import { getPreviewVideo } from "@/actions/workspace";
-import Sidebar from "@/components/global/sidebar";
 import VideoPreview from "@/components/global/videos/preview";
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 import React from "react";

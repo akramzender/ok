@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(
     req: NextRequest,
-    { params }: { params: { id: string } }
-) {
+    { params }: { params: Promise<{ id: string }> }
+): Promise<NextResponse> {
     const body = await req.json();
-    const { id } = params;
+    const id  = (await params).id;
     
     const completeProcessing = await  client.video.update({
         where : {

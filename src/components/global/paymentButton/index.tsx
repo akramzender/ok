@@ -3,14 +3,16 @@ import React from 'react'
 import Loader from '../loader'
 import { useSubscription } from '@/hooks/useSubscription'
 
-type Props = {}
+type Props = {
+    color?: string
+}
 
-const PaymentButton = (props: Props) => {
+const PaymentButton = ({color}: Props) => {
     const {onSubscribe , isProcessing} = useSubscription()
   return (
-    <Button className='text-sm w-full bg-[#00a571]'
+    <Button className={`text-sm w-full ${color}`}
             onClick={onSubscribe} >
-        <Loader color='#000' state={isProcessing}>
+        <Loader color={color} state={isProcessing}>
             Upgrade Now
         </Loader>
     </Button>

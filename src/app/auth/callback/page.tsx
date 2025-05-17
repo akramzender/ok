@@ -1,6 +1,6 @@
 import { onAuthenticateUser } from "@/actions/user";
 import { redirect } from "next/navigation";
-import React from "react";
+
 
 const AutoCallbackPage = async () => {
   const Auth = await onAuthenticateUser();

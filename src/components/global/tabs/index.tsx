@@ -1,6 +1,6 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
-import AiTools from "../ai-tools";
+
 
 
 type Props = {

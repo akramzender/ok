@@ -1,6 +1,5 @@
 import { onAuthenticateUser } from "@/actions/user";
 import { redirect } from "next/navigation";
-import React from "react";
 
 const DashboardPage = async () => {
   const Auth = await onAuthenticateUser();

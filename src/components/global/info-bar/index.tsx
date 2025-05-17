@@ -4,9 +4,11 @@ import { UserButton } from "@clerk/nextjs";
 import { Search, UploadIcon, Video } from "lucide-react";
 import React from "react";
 
-type Props = {};
+type Props =  {
+  workspaceId: string;
+};
 
-const InfoBar = (props: Props) => {
+const InfoBar = ({ workspaceId }: Props) => {
   return (
     <header className="pl-20 md:pl-[265px] fixed top-0 left-0 p-4 w-full flex items-center justify-between bg-gradient-to-r from-[#131313] to-[#1a1a1a] shadow-lg">
     {/* Search Bar */}

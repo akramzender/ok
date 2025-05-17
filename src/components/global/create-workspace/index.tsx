@@ -7,7 +7,10 @@ import React from "react";
 import Modal from "../modal";
 import WorkspaceForm from "@/components/forms/workspace-form";
 
-type Props = {};
+type Props = {
+   workspaceId: string 
+
+};
 
 const CreateWorkspace = (props: Props) => {
   const { data } = useQueryData(["user-workspaces"], getWorkspaces);

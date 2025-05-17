@@ -5,7 +5,7 @@ import { Menu } from "lucide-react";
 import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
+import Image from "next/image";
 
 const LandingPageNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,7 +46,7 @@ const LandingPageNavbar = () => {
           )}
         </div>
         <div className="flex items-center gap-x-2">
-          <img
+          <Image
             src="/odix.svg" // Replace with the actual path to your logo
             alt="Logo"
             width={32} // Width in pixels

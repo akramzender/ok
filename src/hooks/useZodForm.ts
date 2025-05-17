@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import  z, {ZodSchema } from "zod";
-import { error } from "console";
+
 const useZodForm = (
     schema:ZodSchema,
     mutation:UseMutateFunction,

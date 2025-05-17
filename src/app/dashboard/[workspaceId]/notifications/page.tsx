@@ -5,9 +5,13 @@ import { useQueryData } from '@/hooks/useQueryData';
 import { User } from 'lucide-react';
 import React from 'react';
 
-type Props = {};
+type Props = {
+  params: Promise< {
+    workspaceId: string;
+  }>;
+};
 
-const Notifications = (props: Props) => {
+const Notifications = ({params }: Props) => {
   const { data: notifications } = useQueryData(
     ['user-notifications'],
     getNotifications

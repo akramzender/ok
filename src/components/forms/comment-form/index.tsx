@@ -3,7 +3,7 @@ import FormGenerator from '@/components/global/form-generator'
 import Loader from '@/components/global/loader'
 import { Button } from '@/components/ui/button'
 import { useVideoComment } from '@/hooks/useVideo'
-import { Send, VideoOff, X } from 'lucide-react'
+import { Send } from 'lucide-react'
 import React from 'react'
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 
 }
 
-const CommentForm = ({videoId,commentId,author,close}: Props) => {
+const CommentForm = ({videoId,commentId,author}: Props) => {
     const {register,isPending,errors,onFormSubmit} = useVideoComment(videoId,commentId)
     return (
     <form className=' relative w-full' onSubmit={onFormSubmit}>

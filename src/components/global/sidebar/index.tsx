@@ -15,7 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { useQueryData } from "@/hooks/useQueryData";
 import { getWorkspaces } from "@/actions/workspace";
 import { NotificationsProps, WorkspaceProps } from "@/types/index.type";
-import { Loader, Menu, PlusCircle } from "lucide-react";
+import { Menu, PlusCircle } from "lucide-react";
 import { Modal } from "../modal";
 
 import { MENU_ITEMS } from "@/constants";
@@ -59,6 +59,8 @@ export const Sidebar = ({ activeWorkspaceId }: Props) => {
   const currentWorkspace = workspace?.workspace?.find(
     (s) => s.id === activeWorkspaceId
   );
+
+  console.log(currentWorkspace)
 
   if (isFetched && workspace) {
     dispatch(WORKSPACES({ workspaces: workspace.workspace }));
@@ -198,7 +200,7 @@ export const Sidebar = ({ activeWorkspaceId }: Props) => {
 
   return (
     <div className="full">
-      <InfoBar />
+      <InfoBar workspaceId={activeWorkspaceId} />
       {/* SHEET for Mobile and Desktop */}
       <div className="md:hidden fixed my-4 z-50">
         <Sheet>

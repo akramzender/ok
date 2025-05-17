@@ -46,6 +46,7 @@ export async function POST(req: NextRequest) {
                 })
             ).id;
         } catch (error) {
+            console.error("⛔ Error in creating or finding folder:", error);
             return NextResponse.json({ status: 500, message: "Error creating or finding folder" });
         }
 
@@ -58,7 +59,7 @@ export async function POST(req: NextRequest) {
                 console.log("Detected S3 URL as source:", body.filename);
                 source = body.filename; // Use the full URL as source
             }
-            
+            console.log("Source:", source);
             const videoRecord = await client.video.create({
                 data: {
                     source: source,
@@ -68,6 +69,7 @@ export async function POST(req: NextRequest) {
                     processing: true,
                 },
             });
+            console.log("Video record created:", videoRecord);
 
             const userPlan = await client.user.findUnique({
                 where: { id },
@@ -76,10 +78,12 @@ export async function POST(req: NextRequest) {
 
             return NextResponse.json({ status: 200, plan: userPlan?.subscription?.plan || "FREE" });
         } catch (error) {
+            console.error("⛔ Error in creating video record:", error);
             return NextResponse.json({ status: 500, message: "Error creating video record" });
         }
 
     } catch (error) {
+        console.error("⛔ Error in processing route:", error);
         return NextResponse.json({ status: 500, message: "Internal server error" });
     }
 }

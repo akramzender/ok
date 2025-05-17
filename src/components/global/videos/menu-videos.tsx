@@ -1,5 +1,4 @@
 import React from "react";
-import { string } from "zod";
 import Modal from "../modal";
 import { Move } from "lucide-react";
 import ChangeVideoLocation from "@/components/forms/change-video-location";

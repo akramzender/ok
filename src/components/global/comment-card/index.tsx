@@ -80,9 +80,9 @@ const CommentCard = ({ comment, author, videoId, commentId, reply, isReply }: Pr
               commentId={r.commentId!}
               videoId={videoId}
               author={{
-                image: r.User?.image!,
-                firstname: r.User?.firstname!,
-                lastname: r.User?.lastname!,
+                image: r.User?.image || '/fallback-avatar.png',
+                firstname: r.User?.firstname || 'Unknown',
+                lastname: r.User?.lastname || 'User',
               }}
             />
           ))}
