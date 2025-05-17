@@ -10,11 +10,12 @@ type ParamsType = {
 };
 
 type Props = {
-  params: ParamsType;
+  params: Promise<ParamsType>; // params is a Promise here
 };
 
-const Page = ({ params }: Props) => {
-  const { workspaceId } = params;
+const Page = async ({ params }: Props) => {
+  const resolvedParams = await params; // await the promise
+  const { workspaceId } = resolvedParams;
 
   return (
     <div>
@@ -43,7 +44,6 @@ const Page = ({ params }: Props) => {
           {/* Videos Tab */}
           <TabsContent value="videos">
             <Folders workspaceId={workspaceId} />
-            {/* Include the Videos component */}
           </TabsContent>
 
           {/* Archive Tab */}
